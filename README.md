@@ -9,7 +9,7 @@ Pink-themed customer cake designer for Android and mobile browsers.
 - Add a name and a custom message to the cake
 - Elegant script, classic and modern text styles
 - Sprinkles, flowers, berries, pearls, candles and minimal decoration
-- Save a PNG design image; in the Android app it is saved to Pictures/FAISAL Cake Maker
+- Save a PNG design image; on Android 10 and newer it is saved to Pictures/Faisal Cake Maker, with clear success/failure feedback
 - Reset the design at any time
 
 ## Product scope
