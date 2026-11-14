@@ -41,7 +41,7 @@ let cakeColor='#f6a6c4',textColor='#54283c';
 for(let i=1;i<=10;i++)$('weight').add(new Option(i+' pound'+(i>1?'s':''),i));
 function swatches(target,palette,which){const host=$(target);palette.forEach(([name,color],i)=>{const b=document.createElement('button');b.className='swatch';b.type='button';b.title=name;b.setAttribute('aria-label',name);b.style.background=color;b.setAttribute('aria-pressed',i===0?'true':'false');b.onclick=()=>{if(which==='cake')cakeColor=color;else textColor=color;[...host.children].forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');draw()};host.append(b)})}
 swatches('cakeColors',cakePalette,'cake');swatches('textColors',textPalette,'text');
-function rr(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+function rr(x,y,w,h,r){ctx.beginPath();if(ctx.roundRect){ctx.roundRect(x,y,w,h,r)}else{const q=Math.min(r,w/2,h/2);ctx.moveTo(x+q,y);ctx.arcTo(x+w,y,x+w,y+h,q);ctx.arcTo(x+w,y+h,x,y+h,q);ctx.arcTo(x,y+h,x,y,q);ctx.arcTo(x,y,x+w,y,q)}ctx.fill()}
 function draw(){
  ctx.clearRect(0,0,700,560);
  const g=ctx.createLinearGradient(0,0,0,560);g.addColorStop(0,'#fffafd');g.addColorStop(1,'#ffeaf2');ctx.fillStyle=g;ctx.fillRect(0,0,700,560);
@@ -67,7 +67,8 @@ function draw(){
  ctx.fillStyle='#a66c86';ctx.font='16px Arial';ctx.fillText($('weight').value+' lb • '+shape.toUpperCase()+' CAKE',350,510);
 }
 ['shape','weight','decor','message','name','font'].forEach(id=>$(id).addEventListener('input',draw));
-$('save').onclick=()=>{try{const image=canvas.toDataURL('image/png');if(window.AndroidCake&&typeof window.AndroidCake.saveCakeImage==='function'){window.AndroidCake.saveCakeImage(image);$('saveStatus').textContent='Saving your cake picture…'}else{const a=document.createElement('a');a.download='faisal-cake-design.png';a.href=image;a.click();$('saveStatus').textContent='Cake picture download started.'}}catch(e){$('saveStatus').textContent='Could not save the picture. Please try again.'}};
+window.onCakeImageSaved=(success)=>{$('save').disabled=false;$('save').textContent='Save Cake Picture';$('saveStatus').textContent=success?'Cake picture saved in your Pictures folder.':'Could not save the picture. Please try again.'};
+$('save').onclick=()=>{try{$('save').disabled=true;$('save').textContent='Saving…';const image=canvas.toDataURL('image/png');if(window.AndroidCake&&typeof window.AndroidCake.saveCakeImage==='function'){$('saveStatus').textContent='Saving your cake picture…';window.AndroidCake.saveCakeImage(image)}else{const a=document.createElement('a');a.download='faisal-cake-design.png';a.href=image;a.click();$('save').disabled=false;$('save').textContent='Save Cake Picture';$('saveStatus').textContent='Cake picture download started.'}}catch(e){$('save').disabled=false;$('save').textContent='Save Cake Picture';$('saveStatus').textContent='Could not save the picture. Please try again.'}};
 $('reset').onclick=()=>{$('shape').value='round';$('weight').value='2';$('decor').value='sprinkles';$('message').value='';$('name').value='';$('font').value='cursive';cakeColor='#f6a6c4';textColor='#54283c';[...$('cakeColors').children].forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));[...$('textColors').children].forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));draw()};
 $('weight').value='2';draw();
 </script></body></html>
