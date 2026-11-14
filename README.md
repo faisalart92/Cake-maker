@@ -1,32 +1,31 @@
 # FAISAL CAKE MAKER
 
-A pink-themed, mobile-friendly cake design customizer.
+Pink-themed customer cake designer for Android and mobile browsers.
 
-## Features
-- Live cake preview
-- Round, heart, square and tall cake shapes
-- Cake weight selector (1–10 pounds)
-- Cake colour and writing colour
-- Customer name and message on the cake
-- Elegant, classic and modern writing styles
-- Sprinkles, flowers, berries, pearls, candles or minimal decoration
-- Save the design as a PNG image
-- Works locally in a browser; no AI, account, admin panel, payment or server required
+## Customer features
+- Live preview of round, heart, square and tall cakes
+- Cake size selector from 1 to 10 pounds
+- Eight cake colours and six writing colours
+- Add a name and a custom message to the cake
+- Elegant script, classic and modern text styles
+- Sprinkles, flowers, berries, pearls, candles and minimal decoration
+- Save a PNG design image; in the Android app it is saved to Pictures/FAISAL Cake Maker
+- Reset the design at any time
 
-## Run on Android with Acode
-1. Open this repository in GitHub and download the project.
-2. Open `index.html` in Acode.
-3. Preview it in a browser. Internet is not required after the file is saved.
+## Product scope
+This is a customer-only design tool. It has no admin panel, AI service, account, payment gateway, price list or online ordering. The designer works offline after installation.
 
-## APK status
-The repository currently contains the web app source, not a compiled Android APK. To create an installable APK, package this web app in an Android WebView wrapper and build/sign it using a suitable Android packaging workflow.
+## Preview in Acode
+1. Open `index.html` from this repository in Acode.
+2. Preview it in a browser.
+3. Change the cake style and options; use **Save Cake Picture** to download the PNG.
 
-
-## Build Android APK automatically
-Every push to `main` starts the GitHub Actions workflow in `.github/workflows/build-apk.yml`.
+## Build Android APK with GitHub Actions
+A push to the `main` branch starts the workflow in `.github/workflows/build-apk.yml`.
 1. Open the repository's **Actions** tab.
-2. Select **Build FAISAL CAKE MAKER APK** and open the latest run.
-3. When the run finishes successfully, download the `FAISAL-CAKE-MAKER-APK` artifact.
-4. Extract the ZIP and install `app-debug.apk` on your Android phone. If Android asks, allow installation from that source.
+2. Select **Build FAISAL CAKE MAKER APK** and open the newest run.
+3. Wait for the build to finish successfully.
+4. Download the `FAISAL-CAKE-MAKER-APK` artifact ZIP.
+5. Extract it and install `app-debug.apk` on your Android phone.
 
-The APK is a debug build for testing. A signed release APK should be created separately before public distribution.
+The workflow creates a debug APK for testing. This is not a Play Store-signed release. Build success must be confirmed in the Actions tab; source upload alone does not mean an APK has been built.
