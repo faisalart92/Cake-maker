@@ -22,7 +22,7 @@ button{border:0;border-radius:12px;padding:12px 16px;background:var(--pink);colo
 <body>
 <header><h1>🎂 FAISAL CAKE MAKER</h1><p>DESIGN YOUR DREAM CAKE</p></header>
 <main>
-<section class="panel preview-panel"><h2>Your Cake Preview</h2><div class="preview"><canvas id="cake" width="700" height="560" aria-label="Live cake design preview"></canvas></div><p class="hint">Your cake preview updates as you change the design. Save the picture and show it to your baker.</p><div class="actions"><button id="save">Save Cake Picture</button><button id="reset" type="button">Reset Design</button></div></section>
+<section class="panel preview-panel"><h2>Your Cake Preview</h2><div class="preview"><canvas id="cake" width="700" height="560" aria-label="Live cake design preview"></canvas></div><p class="hint">Your cake preview updates as you change the design. Save the picture and show it to your baker.</p><div class="actions"><button id="save">Save Cake Picture</button><button id="reset" type="button">Reset Design</button></div><p id="saveStatus" class="hint" role="status" aria-live="polite">Choose your cake design, then save its picture.</p></section>
 <section class="panel"><h2>1. Cake Style</h2><div class="grid">
 <div><label for="shape">Cake shape</label><select id="shape"><option value="round">Round</option><option value="heart">Heart</option><option value="square">Square</option><option value="tall">Tall Round</option></select></div>
 <div><label for="weight">Cake weight</label><select id="weight"></select></div>
@@ -67,7 +67,7 @@ function draw(){
  ctx.fillStyle='#a66c86';ctx.font='16px Arial';ctx.fillText($('weight').value+' lb • '+shape.toUpperCase()+' CAKE',350,510);
 }
 ['shape','weight','decor','message','name','font'].forEach(id=>$(id).addEventListener('input',draw));
-$('save').onclick=()=>{const a=document.createElement('a');a.download='faisal-cake-design.png';a.href=canvas.toDataURL('image/png');a.click()};
+$('save').onclick=()=>{try{const image=canvas.toDataURL('image/png');if(window.AndroidCake&&typeof window.AndroidCake.saveCakeImage==='function'){window.AndroidCake.saveCakeImage(image);$('saveStatus').textContent='Saving your cake picture…'}else{const a=document.createElement('a');a.download='faisal-cake-design.png';a.href=image;a.click();$('saveStatus').textContent='Cake picture download started.'}}catch(e){$('saveStatus').textContent='Could not save the picture. Please try again.'}};
 $('reset').onclick=()=>{$('shape').value='round';$('weight').value='2';$('decor').value='sprinkles';$('message').value='';$('name').value='';$('font').value='cursive';cakeColor='#f6a6c4';textColor='#54283c';[...$('cakeColors').children].forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));[...$('textColors').children].forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));draw()};
 $('weight').value='2';draw();
 </script></body></html>
