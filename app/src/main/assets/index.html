@@ -2,73 +2,103 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f7a9c4"><title>FAISAL CAKE MAKER</title>
+<meta name="theme-color" content="#f8a9c7"><title>FAISAL CAKE MAKER</title>
 <style>
-:root{--pink:#ef78a7;--deep:#b93670;--pale:#fff0f5;--ink:#442536;--line:#f3c7d8}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#fff7fa,#ffe6f0);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
-header{padding:22px 16px;text-align:center;background:linear-gradient(120deg,#f7a9c4,#e86e9f);color:white;box-shadow:0 5px 18px #c75a852b}
-header h1{margin:0;font-size:23px;letter-spacing:1px}header p{margin:5px 0 0;font-size:12px;letter-spacing:2px}
-main{max-width:900px;margin:auto;padding:16px;display:grid;gap:15px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 8px 25px #9f426015}
-h2{font-size:17px;margin:0 0 13px;color:var(--deep)}.preview{background:radial-gradient(ellipse at center,#fff 0,#fff7fa 65%,#ffeaf2 100%);border:1px solid var(--line);border-radius:15px;padding:8px}
+:root{--pink:#ef78a7;--deep:#b83270;--ink:#432438;--muted:#987b8b;--line:#f5d5e1;--paper:#fff;--soft:#fff5f9}
+*{box-sizing:border-box}body{margin:0;background:#fff7fa;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:relative;overflow:hidden;text-align:center;padding:25px 18px 27px;color:#fff;background:linear-gradient(120deg,#f6b1ca 0%,#ed82ad 52%,#d95b91 100%);box-shadow:0 8px 25px #b64b7925}
+header:before,header:after{content:"";position:absolute;border:1px solid #ffffff45;border-radius:50%;width:190px;height:190px;top:-120px}header:before{left:-65px}header:after{right:-65px}
+.brand-mark{width:43px;height:43px;margin:0 auto 9px;border-radius:15px;background:#ffffff35;display:grid;place-items:center;font-size:25px;box-shadow:inset 0 1px 0 #ffffff75}
+header h1{margin:0;font-size:22px;letter-spacing:1.4px;font-weight:850}header p{margin:6px 0 0;font-size:10px;letter-spacing:3px;font-weight:750;opacity:.95}
+main{width:min(100%,980px);margin:auto;padding:16px 14px 22px;display:grid;gap:14px}
+.panel{background:var(--paper);border:1px solid #f4dce5;border-radius:21px;padding:17px;box-shadow:0 7px 25px #813c5810}
+.section-head{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.step{width:29px;height:29px;flex:none;border-radius:10px;background:#ffe7f0;color:var(--deep);display:grid;place-items:center;font-size:13px;font-weight:850}
+h2{font-size:15px;margin:0;color:#572d43;font-weight:800;letter-spacing:.1px}
+.preview-panel{padding:17px;background:linear-gradient(155deg,#fff 0%,#fff8fb 100%)}
+.preview-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.live-pill{font-size:10px;color:#a43c6d;background:#ffedf4;border-radius:30px;padding:6px 9px;font-weight:800;letter-spacing:.5px}
+.preview{overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#fff 0,#fff9fc 55%,#ffeaf2 100%);border:1px solid #f3d5e1;border-radius:17px;padding:5px;box-shadow:inset 0 2px 9px #a94d6d0b}
 canvas{display:block;width:100%;height:auto;max-height:390px}
+.preview-note{font-size:11px;color:var(--muted);line-height:1.55;margin:11px 2px 13px}
+.actions{display:grid;grid-template-columns:1.3fr 1fr;gap:9px}
+button{font:inherit;cursor:pointer;transition:transform .15s,box-shadow .15s,opacity .15s}
+.action-btn{border:0;border-radius:13px;padding:13px 10px;color:#fff;background:linear-gradient(120deg,#bd3c78,#e36c9d);font-size:12px;font-weight:800;box-shadow:0 5px 12px #b83b741f}
+.action-btn.secondary{background:#fff0f5;color:#a53b6c;border:1px solid #f5d1df;box-shadow:none}
+button:active{transform:scale(.98)}button:disabled{opacity:.65}
+#saveStatus{min-height:16px;margin:9px 2px 0;font-size:11px;color:#987789}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}input,select{width:100%;border:1px solid #e9b6ca;border-radius:10px;padding:11px;background:#fffafd;color:var(--ink);font:inherit;min-height:44px}
-.colors{display:flex;flex-wrap:wrap;gap:9px}.swatch{width:34px;height:34px;border-radius:50%;border:3px solid white;box-shadow:0 0 0 1px #d7a6b9;cursor:pointer}.swatch[aria-pressed=true]{box-shadow:0 0 0 3px var(--deep)}
-button{border:0;border-radius:12px;padding:12px 16px;background:var(--pink);color:white;font-weight:750;font-size:14px;cursor:pointer}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions button:first-child{background:var(--deep)}button:active{transform:scale(.98)}
-.hint{font-size:12px;color:#896878;line-height:1.5}.footer{text-align:center;font-size:11px;color:#936d7d;padding:0 12px 22px}
-@media(min-width:720px){main{grid-template-columns:1fr 1fr;align-items:start}.preview-panel{grid-row:span 2}.grid{grid-template-columns:1fr 1fr}}
+.field label{display:block;font-size:11px;font-weight:750;color:#79576a;margin:0 0 6px}
+input,select{appearance:none;width:100%;min-width:0;border:1px solid #ecd1dc;border-radius:11px;padding:11px 10px;background:#fffafd;color:#4c2b3d;font:inherit;font-size:12px;min-height:44px;outline:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a94b76' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 11px center;padding-right:28px}
+input:focus,select:focus{border-color:#e47aa5;box-shadow:0 0 0 3px #fce4ed}
+.color-panel h2{margin-bottom:12px}.color-group+.color-group{border-top:1px solid #f7e5ec;margin-top:17px;padding-top:16px}
+.colors{display:flex;flex-wrap:wrap;gap:11px}
+.swatch{width:31px;height:31px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px #dfc3cf;cursor:pointer;padding:0}
+.swatch[aria-pressed=true]{box-shadow:0 0 0 2px #b83270,0 3px 8px #b8327033;transform:scale(1.06)}
+.footer{text-align:center;color:#a58796;font-size:10px;padding:0 14px 23px;letter-spacing:.2px}
+@media(min-width:760px){main{grid-template-columns:1.05fr .95fr;align-items:start;padding-top:22px;gap:16px}.preview-panel{grid-row:span 2;position:sticky;top:12px}.panel{padding:20px}.grid{gap:14px}}
+@media(max-width:360px){header h1{font-size:19px}.panel{padding:14px}.grid{gap:9px}.actions{grid-template-columns:1fr 1fr}.action-btn{font-size:11px}}
 </style></head>
 <body>
-<header><h1>🎂 FAISAL CAKE MAKER</h1><p>DESIGN YOUR DREAM CAKE</p></header>
+<header><div class="brand-mark">🎂</div><h1>FAISAL CAKE MAKER</h1><p>CREATE A CAKE YOU'LL LOVE</p></header>
 <main>
-<section class="panel preview-panel"><h2>Your Cake Preview</h2><div class="preview"><canvas id="cake" width="700" height="560" aria-label="Live cake design preview"></canvas></div><p class="hint">Your cake preview updates as you change the design. Save the picture and show it to your baker.</p><div class="actions"><button id="save">Save Cake Picture</button><button id="reset" type="button">Reset Design</button></div><p id="saveStatus" class="hint" role="status" aria-live="polite">Choose your cake design, then save its picture.</p></section>
-<section class="panel"><h2>1. Cake Style</h2><div class="grid">
-<div><label for="shape">Cake shape</label><select id="shape"><option value="round">Round</option><option value="heart">Heart</option><option value="square">Square</option><option value="tall">Tall Round</option></select></div>
-<div><label for="weight">Cake weight</label><select id="weight"></select></div>
-<div><label for="decor">Decoration</label><select id="decor"><option value="sprinkles">Sprinkles</option><option value="flowers">Flowers</option><option value="berries">Berries</option><option value="pearls">Pearls</option><option value="candles">Candles</option><option value="minimal">Minimal</option></select></div>
-<div><label for="message">Cake message</label><input id="message" maxlength="28" placeholder="Happy Birthday!"></div>
-<div><label for="name">Name on cake</label><input id="name" maxlength="18" placeholder="Enter a name"></div>
-<div><label for="font">Writing style</label><select id="font"><option value="cursive">Elegant script</option><option value="serif">Classic</option><option value="sans">Modern</option></select></div>
+<section class="panel preview-panel">
+ <div class="preview-top"><div class="section-head" style="margin:0"><span class="step">✦</span><h2>Your Cake Preview</h2></div><span class="live-pill">● LIVE DESIGN</span></div>
+ <div class="preview"><canvas id="cake" width="700" height="560" aria-label="Live cake design preview"></canvas></div>
+ <p class="preview-note">Your design updates instantly. Save your cake picture and share it with your baker.</p>
+ <div class="actions"><button class="action-btn" id="save">↓ &nbsp; Save Cake Picture</button><button class="action-btn secondary" id="reset" type="button">↺ &nbsp; Reset Design</button></div>
+ <p id="saveStatus" role="status" aria-live="polite">Choose your style and make it special.</p>
+</section>
+<section class="panel"><div class="section-head"><span class="step">01</span><h2>Choose Your Cake Style</h2></div><div class="grid">
+<div class="field"><label for="shape">Cake shape</label><select id="shape"><option value="round">Round</option><option value="heart">Heart</option><option value="square">Square</option><option value="tall">Tall Round</option></select></div>
+<div class="field"><label for="weight">Cake weight</label><select id="weight"></select></div>
+<div class="field"><label for="decor">Decoration</label><select id="decor"><option value="sprinkles">Sprinkles</option><option value="flowers">Flowers</option><option value="berries">Berries</option><option value="pearls">Pearls</option><option value="candles">Candles</option><option value="minimal">Minimal</option></select></div>
+<div class="field"><label for="font">Writing style</label><select id="font"><option value="cursive">Elegant Script</option><option value="serif">Classic</option><option value="sans">Modern</option></select></div>
+<div class="field"><label for="message">Cake message</label><input id="message" maxlength="28" placeholder="Happy Birthday!"></div>
+<div class="field"><label for="name">Name on cake</label><input id="name" maxlength="18" placeholder="Enter a name"></div>
 </div></section>
-<section class="panel"><h2>2. Choose Cake Colour</h2><div class="colors" id="cakeColors"></div><h2 style="margin-top:18px">3. Writing Colour</h2><div class="colors" id="textColors"></div></section>
-</main><div class="footer">FAISAL CAKE MAKER • Design offline on your device • No account required</div>
+<section class="panel color-panel">
+ <div class="color-group"><div class="section-head"><span class="step">02</span><h2>Choose Cake Colour</h2></div><div class="colors" id="cakeColors"></div></div>
+ <div class="color-group"><div class="section-head"><span class="step">03</span><h2>Choose Writing Colour</h2></div><div class="colors" id="textColors"></div></div>
+</section>
+</main>
+<div class="footer">FAISAL CAKE MAKER &nbsp;•&nbsp; Works offline &nbsp;•&nbsp; No account needed</div>
 <script>
 const $=id=>document.getElementById(id),canvas=$('cake'),ctx=canvas.getContext('2d');
-const cakePalette=[['Pink','#f6a6c4'],['White','#fffafc'],['Chocolate','#80503f'],['Lavender','#c7a9ec'],['Blue','#9dc9ee'],['Mint','#a8ddc7'],['Red','#df6b83'],['Gold','#e8c36b']];
+const cakePalette=[['Pink','#f6a6c4'],['Ivory','#fffaf2'],['Chocolate','#80503f'],['Lavender','#c7a9ec'],['Sky Blue','#9dc9ee'],['Mint','#a8ddc7'],['Rose','#df6b83'],['Gold','#e8c36b']];
 const textPalette=[['Dark','#54283c'],['White','#ffffff'],['Red','#d33d58'],['Gold','#bd8b25'],['Purple','#7846a1'],['Blue','#315e9d']];
 let cakeColor='#f6a6c4',textColor='#54283c';
 for(let i=1;i<=10;i++)$('weight').add(new Option(i+' pound'+(i>1?'s':''),i));
 function swatches(target,palette,which){const host=$(target);palette.forEach(([name,color],i)=>{const b=document.createElement('button');b.className='swatch';b.type='button';b.title=name;b.setAttribute('aria-label',name);b.style.background=color;b.setAttribute('aria-pressed',i===0?'true':'false');b.onclick=()=>{if(which==='cake')cakeColor=color;else textColor=color;[...host.children].forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');draw()};host.append(b)})}
 swatches('cakeColors',cakePalette,'cake');swatches('textColors',textPalette,'text');
-function rr(x,y,w,h,r){ctx.beginPath();if(ctx.roundRect){ctx.roundRect(x,y,w,h,r)}else{const q=Math.min(r,w/2,h/2);ctx.moveTo(x+q,y);ctx.arcTo(x+w,y,x+w,y+h,q);ctx.arcTo(x+w,y+h,x,y+h,q);ctx.arcTo(x,y+h,x,y,q);ctx.arcTo(x,y,x+w,y,q)}ctx.fill()}
+function rounded(x,y,w,h,r){ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,w,h,r);else{ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r)}ctx.fill()}
+function flower(x,y,scale=1){for(let j=0;j<6;j++){let a=j*Math.PI/3;ctx.beginPath();ctx.fillStyle='#fff4f8';ctx.arc(x+Math.cos(a)*9*scale,y+Math.sin(a)*9*scale,6*scale,0,Math.PI*2);ctx.fill()}ctx.beginPath();ctx.fillStyle='#e9bd62';ctx.arc(x,y,4*scale,0,Math.PI*2);ctx.fill()}
 function draw(){
- ctx.clearRect(0,0,700,560);
- const g=ctx.createLinearGradient(0,0,0,560);g.addColorStop(0,'#fffafd');g.addColorStop(1,'#ffeaf2');ctx.fillStyle=g;ctx.fillRect(0,0,700,560);
- ctx.fillStyle='#e9cbd7';ctx.beginPath();ctx.ellipse(350,450,235,34,0,0,Math.PI*2);ctx.fill();
- const shape=$('shape').value, tall=shape==='tall', size=tall?190:220, x=350-size/2,y=tall?170:220,h=tall?235:175;
- ctx.save();ctx.shadowColor='#9c547455';ctx.shadowBlur=22;ctx.shadowOffsetY=10;ctx.fillStyle=cakeColor;
- if(shape==='heart'){ctx.beginPath();ctx.moveTo(350,420);ctx.bezierCurveTo(80,260,190,130,350,235);ctx.bezierCurveTo(510,130,620,260,350,420);ctx.fill()}
- else if(shape==='square'){rr(x,y,size,h,18)}
- else{ctx.beginPath();ctx.ellipse(350,y+h/2,size/2,h/2,0,0,Math.PI*2);ctx.fill();ctx.fillRect(x,y+h/2,size,h/2);ctx.beginPath();ctx.ellipse(350,y+h,size/2,h/2,0,0,Math.PI*2);ctx.fill()}
+ ctx.clearRect(0,0,700,560);let bg=ctx.createLinearGradient(0,0,0,560);bg.addColorStop(0,'#fffafd');bg.addColorStop(1,'#ffedf4');ctx.fillStyle=bg;ctx.fillRect(0,0,700,560);
+ ctx.fillStyle='#f2dbe4';ctx.beginPath();ctx.ellipse(350,450,240,31,0,0,Math.PI*2);ctx.fill();
+ const shape=$('shape').value,tall=shape==='tall',w=tall?190:230,x=350-w/2,y=tall?178:230,h=tall?225:165;
+ ctx.save();ctx.shadowColor='#8f466655';ctx.shadowBlur=25;ctx.shadowOffsetY=12;
+ let side=ctx.createLinearGradient(x,0,x+w,0);side.addColorStop(0,shade(cakeColor,-15));side.addColorStop(.5,cakeColor);side.addColorStop(1,shade(cakeColor,-22));ctx.fillStyle=side;
+ if(shape==='heart'){ctx.beginPath();ctx.moveTo(350,425);ctx.bezierCurveTo(95,270,190,130,350,235);ctx.bezierCurveTo(510,130,605,270,350,425);ctx.fill()}
+ else if(shape==='square'){rounded(x,y,w,h,22)}
+ else{ctx.beginPath();ctx.ellipse(350,y+h/2,w/2,h/2,0,0,Math.PI*2);ctx.fill();ctx.fillRect(x,y+h/2,w,h/2);ctx.beginPath();ctx.ellipse(350,y+h,w/2,h/2,0,0,Math.PI*2);ctx.fill()}
  ctx.restore();
- ctx.strokeStyle='#ffffffaa';ctx.lineWidth=7;
- if(shape!=='heart'){ctx.beginPath();ctx.ellipse(350,y+5,size/2-4,shape==='square'?12:22,0,0,Math.PI*2);ctx.stroke()}
+ if(shape!=='heart'){ctx.beginPath();ctx.strokeStyle='#ffffffbd';ctx.lineWidth=8;ctx.ellipse(350,y+3,w/2-5,shape==='square'?14:25,0,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.strokeStyle=shade(cakeColor,-12);ctx.lineWidth=3;ctx.ellipse(350,y+9,w/2-12,shape==='square'?10:19,0,0,Math.PI*2);ctx.stroke()}
  const decor=$('decor').value;
- if(decor==='sprinkles'||decor==='pearls'){for(let i=0;i<48;i++){let a=i*2.399,r=35+(i%7)*13,px=350+Math.cos(a)*r,py=(tall?190:245)+Math.sin(a)*r*.55;if(py<y+h-10){ctx.fillStyle=decor==='pearls'?'#fff8e9':['#e34f87','#f5ce5d','#7f65bd','#5ab8a0'][i%4];ctx.beginPath();ctx.arc(px,py,decor==='pearls'?4:3,0,Math.PI*2);ctx.fill()}}}
- if(decor==='flowers'||decor==='berries'){for(let i=0;i<5;i++){let px=260+i*45,py=y+30+(i%2)*18;ctx.fillStyle=decor==='flowers'?'#fff0f6':'#c72f57';for(let j=0;j<5;j++){let a=j*Math.PI*2/5;ctx.beginPath();ctx.arc(px+Math.cos(a)*9,py+Math.sin(a)*9,7,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#eac75c';ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill()}}
- if(decor==='candles'){for(let i=0;i<5;i++){let px=280+i*35;ctx.fillStyle=['#fff','#f4a4c1','#9ec8ee'][i%3];rr(px-5,y-34,10,38,4);ctx.fillStyle='#ffc44e';ctx.beginPath();ctx.ellipse(px,y-40,5,10,0,0,Math.PI*2);ctx.fill()}}
- const font=$('font').value,face=font==='cursive'?'cursive':font==='serif'?'Georgia':'Arial';
- ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=textColor;ctx.shadowColor='#ffffffaa';ctx.shadowBlur=font==='cursive'?2:0;
- ctx.font=(font==='cursive'?'italic ':'')+'bold 30px '+face;
- const msg=$('message').value.trim(),name=$('name').value.trim();
- ctx.fillText(msg||'Your Message',350,shape==='heart'?300:y+h*.52,260);
- ctx.font='bold 25px '+face;ctx.fillText(name,350,shape==='heart'?345:y+h*.72,240);ctx.shadowBlur=0;
- ctx.fillStyle='#a66c86';ctx.font='16px Arial';ctx.fillText($('weight').value+' lb • '+shape.toUpperCase()+' CAKE',350,510);
+ if(decor==='sprinkles'||decor==='pearls'){for(let i=0;i<62;i++){let a=i*2.399,r=32+(i%8)*13,px=350+Math.cos(a)*r,py=(tall?205:258)+Math.sin(a)*r*.58;if(py<y+h-8){ctx.fillStyle=decor==='pearls'?'#fff8e9':['#df5489','#f2c75d','#8c6bc1','#5ab8a0'][i%4];ctx.beginPath();ctx.arc(px,py,decor==='pearls'?5:3.5,0,Math.PI*2);ctx.fill()}}}
+ if(decor==='flowers'||decor==='berries'){for(let i=0;i<5;i++){let px=260+i*45,py=y+31+(i%2)*18;if(decor==='flowers')flower(px,py,.9);else{ctx.beginPath();ctx.fillStyle='#bd3155';ctx.arc(px,py,9,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.fillStyle='#f6a4b9';ctx.arc(px-3,py-3,3,0,Math.PI*2);ctx.fill()}}}
+ if(decor==='candles'){for(let i=0;i<5;i++){let px=280+i*35;ctx.fillStyle=['#fff','#f4a4c1','#9ec8ee'][i%3];rounded(px-5,y-34,10,38,4);ctx.beginPath();ctx.fillStyle='#ffc44e';ctx.ellipse(px,y-42,5,9,0,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.fillStyle='#f28d43';ctx.ellipse(px,y-42,2,5,0,0,Math.PI*2);ctx.fill()}}
+ const font=$('font').value,face=font==='cursive'?'cursive':font==='serif'?'Georgia':'Arial',msg=$('message').value.trim(),name=$('name').value.trim();
+ ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=textColor;ctx.shadowColor='#fff';ctx.shadowBlur=font==='cursive'?3:0;
+ ctx.font=(font==='cursive'?'italic ':'')+'bold 30px '+face;ctx.fillText(msg||'Your Message',350,shape==='heart'?300:y+h*.52,255);
+ ctx.font='bold 25px '+face;ctx.fillText(name,350,shape==='heart'?345:y+h*.72,230);ctx.shadowBlur=0;
+ ctx.fillStyle='#a66c86';ctx.font='bold 15px Arial';ctx.fillText($('weight').value+' LB  •  '+shape.toUpperCase()+' CAKE',350,510);
 }
+function shade(hex,amt){let n=parseInt(hex.slice(1),16),r=Math.max(0,Math.min(255,(n>>16)+amt)),g=Math.max(0,Math.min(255,((n>>8)&255)+amt)),b=Math.max(0,Math.min(255,(n&255)+amt));return '#'+(1<<24|r<<16|g<<8|b).toString(16).slice(1)}
 ['shape','weight','decor','message','name','font'].forEach(id=>$(id).addEventListener('input',draw));
-window.onCakeImageSaved=(success)=>{$('save').disabled=false;$('save').textContent='Save Cake Picture';$('saveStatus').textContent=success?'Cake picture saved in your Pictures folder.':'Could not save the picture. Please try again.'};
-$('save').onclick=()=>{try{$('save').disabled=true;$('save').textContent='Saving…';const image=canvas.toDataURL('image/png');if(window.AndroidCake&&typeof window.AndroidCake.saveCakeImage==='function'){$('saveStatus').textContent='Saving your cake picture…';window.AndroidCake.saveCakeImage(image)}else{const a=document.createElement('a');a.download='faisal-cake-design.png';a.href=image;a.click();$('save').disabled=false;$('save').textContent='Save Cake Picture';$('saveStatus').textContent='Cake picture download started.'}}catch(e){$('save').disabled=false;$('save').textContent='Save Cake Picture';$('saveStatus').textContent='Could not save the picture. Please try again.'}};
+window.onCakeImageSaved=success=>{$('save').disabled=false;$('save').textContent='↓  Save Cake Picture';$('saveStatus').textContent=success?'Your cake picture was saved in Pictures.':'Could not save the picture. Please try again.'};
+$('save').onclick=()=>{try{$('save').disabled=true;$('save').textContent='Saving…';const image=canvas.toDataURL('image/png');if(window.AndroidCake&&typeof window.AndroidCake.saveCakeImage==='function'){$('saveStatus').textContent='Saving your cake picture…';window.AndroidCake.saveCakeImage(image)}else{const a=document.createElement('a');a.download='faisal-cake-design.png';a.href=image;a.click();$('save').disabled=false;$('save').textContent='↓  Save Cake Picture';$('saveStatus').textContent='Your cake picture download has started.'}}catch(e){$('save').disabled=false;$('save').textContent='↓  Save Cake Picture';$('saveStatus').textContent='Could not save the picture. Please try again.'}};
 $('reset').onclick=()=>{$('shape').value='round';$('weight').value='2';$('decor').value='sprinkles';$('message').value='';$('name').value='';$('font').value='cursive';cakeColor='#f6a6c4';textColor='#54283c';[...$('cakeColors').children].forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));[...$('textColors').children].forEach((b,i)=>b.setAttribute('aria-pressed',i===0?'true':'false'));draw()};
 $('weight').value='2';draw();
 </script></body></html>
